@@ -1,7 +1,7 @@
 
 # Get the relative directory name
 # Sorry windows folks, you're gonna have to figure this out and modify it for you pleasure
-IMAGE=osixia/openldap:1.2.2
+IMAGE=osixia/openldap:1.2.5
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 . $DIR/env.sh
 

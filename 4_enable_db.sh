@@ -2,9 +2,10 @@
 
 echo
 cyan "Running: $0: Enable/configure database engine"
+green "Enable Database Secret engine."
 pe "vault secrets enable -path=${DB_PATH} database"
 
-green "Configure the account that Vault will use to manage credentials in Postgres."
+green "Specify account that Vault uses to connect to Postgres database."
 cat << EOF
 vault write ${DB_PATH}/config/${PGDATABASE}
     plugin_name=postgresql-database-plugin
@@ -32,6 +33,7 @@ echo
 # Just set this here as all will likely use the same one
 MAX_TTL=24h
 
+# green "pp - Create hr-full-1m role; full access to HR schema on mother db for 1 minute"
 green "Full read can be used by security teams to scan for credentials in any schema"
 ROLE_NAME="full-read"
 CREATION_STATEMENT="CREATE ROLE \"{{name}}\" WITH LOGIN PASSWORD '{{password}}' VALID UNTIL '{{expiration}}';

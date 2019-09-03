@@ -4,3 +4,7 @@ policies/kv-user-template-policy.hcl
 .vagrant/
 *key*
 *.log
+*.token
+*.creds
+tmp/
+sakila*

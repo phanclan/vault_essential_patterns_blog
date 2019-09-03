@@ -10,7 +10,8 @@ USERNAME=chun
 green "Logging in with the memberOf overlay, notice the path difference"
 yellow "Ensure the root token isn't being used"
 pe "unset VAULT_TOKEN"
-pe "vault login -method=ldap -path=ldap-mo username=${USERNAME} password=${USER_PASSWORD}"
+# pe "vault login -method=ldap -path=ldap-mo username=${USERNAME} password=${USER_PASSWORD}"
+pe "vault login -method=userpass username=chun2 password=thispasswordsucks"
 
 green "Read out the dynamic DB credentials and store them as variables"
 echo

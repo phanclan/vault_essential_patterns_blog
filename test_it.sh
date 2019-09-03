@@ -3,7 +3,10 @@
 cyan "Running: $0: Testing IT requirements"
 yellow "Unset VAULT_TOKEN so we don't accidentally carry over the root token"
 pe "unset VAULT_TOKEN"
-pe "vault login -method=ldap -path=ldap-um username=deepak password=${USER_PASSWORD}"
+
+green "Login to Vault with IT member."
+pe "vault login -method=ldap -path=ldap-um username=deepak password=${USER_PASSWORD} > deepak.txt"
+export VAULT_TOKEN=$(cat deepak.txt | awk '/---/ {getline; print $NF}')
 
 green "Test KV puts to allowed paths"
 pe "vault kv put kv-blog/it/servers/hr/root password=rootntootn"
